@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
 			type: DataTypes.FLOAT,
 		},
 		instructions: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 		},
 		createdInDb: {
 			type: DataTypes.BOOLEAN,
