@@ -21,11 +21,11 @@ module.exports = (sequelize) => {
 		healthScore: {
 			type: DataTypes.FLOAT,
 		},
-		instructions: {
-			type: DataTypes.TEXT,
-		},
 		image: {
 			type: DataTypes.STRING,
+		},
+		instructions: {
+			type: DataTypes.TEXT,
 		},
 		createdInDb: {
 			type: DataTypes.BOOLEAN,
