@@ -2,14 +2,14 @@ const { Router } = require("express");
 const router = Router();
 const axios = require("axios");
 const { getApiRecipes, getAllRecipes } = require("../controllers/recipes");
-const { Recipe } = require("../db");
+const { Recipe, Diet } = require("../db");
 
-router.get("/recipes", async (req, res) => {
+router.get("/", async (req, res) => {
+    const { name } = req.query;
     try {
-        const { name } = req.query;
-        let allRecipes = await getAllRecipes();
+        const allRecipes = await getAllRecipes();
         if (name) {
-            let recipe = await allRecipes.filter((e) =>
+            const recipe = await allRecipes.filter((e) =>
                 e.name.toLowerCase().includes(name.toLowerCase())
             );
             recipe.length
@@ -23,40 +23,7 @@ router.get("/recipes", async (req, res) => {
 	}
 });
 
-router.post("/recipes", async (req, res) => {
-	try {
-		const {
-			name,
-			summary,
-			healthScore,
-			image,
-			instructions,
-			createdInDb,
-			diet,
-        } = req.body;
-        
-		const newRecipe = await Recipe.create({
-			name,
-			summary,
-			healthScore,
-			image,
-			instructions,
-			createdInDb,
-        });
-
-        let dbDiet = await diet.findAll({
-            where: {name:diet}
-        })
-
-        newRecipe.addDiet(dbDiet);
-        res.send('Recipe created succesfully')
-
-    } catch (error) {
-        console.log(error);
-    }
-});
-
-router.get("/recipes/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
     try {
         const { id } = req.params;
         const allRecipes = await getAllRecipes();

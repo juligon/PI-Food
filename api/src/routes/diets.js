@@ -5,7 +5,7 @@ const { getDiets } = require("../controllers/diets");
 const { Diet } = require("../db");
 
 
-router.get("/diets", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         let dBDiets = await Diet.findAll();
         res.json(dBDiets)
