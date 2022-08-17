@@ -1,6 +1,6 @@
 const { Recipe, Diet } = require("../db");
-const axios = require("axios");
 require("dotenv").config();
+const axios = require("axios");
 const {
 	SPOONACULAR_URL,
 	API_KEY,
@@ -11,7 +11,7 @@ const {
 	API_KEY05,
 } = process.env;
 
-const getApiRecipes = async (amount = 100) => {
+const getApiRecipes = async () => {
 	const apiUrl = await axios.get(
 		`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=${100}`
 	);
@@ -51,26 +51,8 @@ const getAllRecipes = async () => {
 	return allRecipes;
 };
 
-const validateApiKey = async (amountRecipes) => {
-	let API_KEY = process.env.API_KEY;
-	let amountKeys = 6;
-	for (let i = 1; i <= amountKeys; i++) {
-		try {
-			let apiUrl = await axios.get(
-				`https://${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=${amountRecipes}`
-			);
-			console.log("key actual", API_KEY);
-			return apiUrl;
-		} catch (error) {
-			console.log("key vencida", API_KEY);
-			API_KEY = process.env[`API_KEY${i}`];
-		}
-	}
-};
-
 module.exports = {
 	getApiRecipes,
 	getDbRecipes,
 	getAllRecipes,
-	validateApiKey,
 };
