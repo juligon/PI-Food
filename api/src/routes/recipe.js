@@ -1,7 +1,5 @@
 const { Router } = require("express");
 const router = Router();
-const axios = require("axios");
-const { getApiRecipes, getAllRecipes } = require("../controllers/recipes");
 const { Recipe, Diet } = require("../db");
 
 router.post("/", async (req, res) => {
