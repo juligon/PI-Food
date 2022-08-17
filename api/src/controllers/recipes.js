@@ -23,6 +23,10 @@ const getApiRecipes = async (amount = 100) => {
 			healthScore: e.healthScore,
 			summary: e.summary,
 			diets: e.diets.map((d) => d),
+			instructions: e.analyzedInstructions[0]?.steps.map((s) => ({
+				number: s.number,
+				step: s.step,
+			})),
 		};
 	});
 	return apiRecipes;

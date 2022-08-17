@@ -15,7 +15,7 @@ const getDiets = async () => {
 	const apiUrl = await axios.get(
 		`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
 	);
-	const apiDiets = await apiUrl.data.results?.map((e) => e.diets).flat();
+	const apiDiets = await apiUrl.data.results?.map((e) => e.diets).flat(Infinity);
 	apiDiets.forEach((e) => {
 		Diet.findOrCreate({
 			where: { name: e },
