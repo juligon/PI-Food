@@ -56,7 +56,7 @@ const validateApiKey = async (amountRecipes) => {
 				`https://${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=${amountRecipes}`
 			);
 			console.log("key actual", API_KEY);
-			return apiInfo;
+			return apiUrl;
 		} catch (error) {
 			console.log("key vencida", API_KEY);
 			API_KEY = process.env[`API_KEY${i}`];
