@@ -13,7 +13,7 @@ const {
 
 const getApiRecipes = async () => {
 	const apiUrl = await axios.get(
-		`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=${100}`
+		`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY03}&addRecipeInformation=true&number=${100}`
 	);
 	const apiRecipes = await apiUrl.data.results?.map((e) => {
 		return {
@@ -29,6 +29,7 @@ const getApiRecipes = async () => {
 			})),
 		};
 	});
+	
 	return apiRecipes;
 };
 
