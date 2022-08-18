@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const { Recipe, Diet } = require("../db");
 
-router.post("/", async (req, res) => {
+router.post("/", async (req, res) => {             
 	try {
 		const {
 			name,
@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
 			createdInDb,
 		} = req.body;
 
-		const newRecipe = await Recipe.create({
+		const newRecipe = await Recipe.create({              //crea la receta en db
 			name,
 			healthScore,
 			summary,
@@ -23,8 +23,8 @@ router.post("/", async (req, res) => {
 			createdInDb,
 		});
 
-		const dbDiet = await Diet.findAll({
-			where: { name: diets },
+		const dbDiet = await Diet.findAll({                 //encuentra la receta que coincida 
+			where: { name: diets },                         //con el nombre que llega por body
 		});
 
 		newRecipe.addDiet(dbDiet);

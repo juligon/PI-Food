@@ -1,16 +1,16 @@
 const { Router } = require("express");
 const router = Router();
 const axios = require("axios");
-const { getApiRecipes, getAllRecipes } = require("../controllers/recipes");
+const { getAllRecipes, getApiRecipes, getDbRecipes } = require("../controllers/recipes");
 const { Recipe, Diet } = require("../db");
 
-router.get("/", async (req, res) => {
-	const { name } = req.query;
+router.get("/", async (req, res) => {         //get a / trae todas las recetas
+	const { name } = req.query;               //si se pasa name por query trae la receta específica
 	try {
 		const allRecipes = await getAllRecipes();
 		if (name) {
 			const recipe = await allRecipes.filter((e) =>
-				e.name.toLowerCase().includes(name.toLowerCase())
+				e.name.toLowerCase().includes(name.toLowerCase())        //para compararlos paso ambos a lower case
 			);
 			recipe.length
 				? res.json(recipe)
@@ -28,7 +28,7 @@ router.get("/:id", async (req, res) => {
         const { id } = req.params;
 		const allRecipes = await getAllRecipes();
 		if (id) {
-			const recipeId = await allRecipes.filter((e) => e.id == id);
+			const recipeId = await allRecipes.filter((e) => e.id == id);      //filtra el id que llega por params
 			recipeId.length
 				? res.json(recipeId)
 				: res.status(404).send("Recipe not found");

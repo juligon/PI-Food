@@ -10,3 +10,5 @@ module.exports = (sequelize) => {
 		},
 	});
 };
+
+//no incluyo id porque lo genera automáticamente sequelize

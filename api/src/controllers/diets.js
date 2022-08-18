@@ -37,8 +37,8 @@ const getDiets = async () => {
 	
 	const diets = await apiUrl.data.results?.map((e) => e.diets).flat();
 
-	diets.forEach((e) => {
-		Diet.findOrCreate({
+	diets.forEach((e) => {                      //por c/elemento del array creo el tipo de dieta en db sin repetirse
+		Diet.findOrCreate({                      
 			where: { name: e },
 		});
 	});
