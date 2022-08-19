@@ -9,7 +9,7 @@ export default function rootReducer(state = initialState, action) {
 				return {
 					...state,
 					recipes: action.payload,            //almacena en mi estado recipes los datos
-				};                                      //que triga la accion GET_RECIPES
+				};                                      //que traiga la accion GET_RECIPES
 			default:
 				return { ...state };
 		} 

@@ -1,9 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "redux";
-import { getRecipes } from "../actions";
-import { Link } from "react";
-import { Card } from "./Card";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import Card from "./Card";
+import { getRecipes } from "../actions/index"
 
 export default function Home() {
 	const dispatch = useDispatch();                           //despacha las actions
@@ -11,7 +11,7 @@ export default function Home() {
 
 	useEffect(() => {           //trae todas las recetas del estado cuando se monta el componente
 		dispatch(getRecipes());
-	},[dispatch]);               //el componente se monta siempre y cuando suceda un dispatch
+	}, [dispatch]);               //el componente se monta siempre y cuando suceda un dispatch
 
 	function handleClick(e) {    //resetea las recetas
 		e.preventDefault();      //previene que se recargue la página
