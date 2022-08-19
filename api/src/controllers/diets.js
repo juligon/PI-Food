@@ -24,7 +24,7 @@ const getDiets = async () => {
 		"lacto vegetarian",
 		"ovo vegetarian",
 		"vegan",
-		"pescetarian",
+		"pescatarian",
 		"paleo",
 		"primal",
 		"low fodmap",
