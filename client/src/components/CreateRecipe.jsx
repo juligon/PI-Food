@@ -79,7 +79,7 @@ export default function CreateRecipe() {
 	return (
 		<div>
 			<Link to="/home">
-				<button>BACK</button>
+				<button>GO BACK</button>
 			</Link>
 			<h1>Create your recipe</h1>
 			<form onSubmit={(e) => handleSubmit(e)}>
