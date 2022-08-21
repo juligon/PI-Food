@@ -16,16 +16,18 @@ const getApiRecipes = async () => {           //trae las recetas de la api
 		`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY03}&addRecipeInformation=true&number=${100}`
 	);
 	const apiRecipes = await apiUrl.data.results?.map((e) => {        //axios trae la info en .data 
-		return {                                                      //mapeo solo la info que necesito
+		return {
+			//mapeo solo la info que necesito
 			id: e.id,
 			name: e.title,
 			image: e.image,
 			healthScore: e.healthScore,
 			summary: e.summary,
-			diets: e.diets.map((d) => d),                                       //es un array de diets
-			instructions: e.analyzedInstructions[0]?.steps.map((s) => ({        //array de objetos
-				number: s.number,                                               //mapeo cada paso con su respectivo 
-				step: s.step,                                                   //numero y texto
+			diets: e.diets.map((d) => d),                             //es un array de diets
+			dishTypes: e.dishTypes.map((d) => d),
+			instructions: e.analyzedInstructions[0]?.steps.map((s) => ({    //array de objetos
+				number: s.number, //mapeo cada paso con su respectivo
+				step: s.step, //numero y texto
 			})),
 		};
 	});
