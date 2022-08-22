@@ -19,7 +19,7 @@ const getApiRecipes = async () => {           //trae las recetas de la api
 		return {
 			//mapeo solo la info que necesito
 			id: e.id,
-			name: e.title,
+			title: e.title,
 			image: e.image,
 			healthScore: e.healthScore,
 			summary: e.summary,

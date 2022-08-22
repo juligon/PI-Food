@@ -5,7 +5,7 @@ const { Recipe, Diet } = require("../db");
 router.post("/", async (req, res) => {             
 	try {
 		const {
-			name,
+			title,
 			healthScore,
 			summary,
 			image,
@@ -14,8 +14,8 @@ router.post("/", async (req, res) => {
 			createdInDb,
 		} = req.body;
 
-		const newRecipe = await Recipe.create({              //crea la receta en db
-			name,
+		const newRecipe = await Recipe.create({ //crea la receta en db
+			title,
 			healthScore,
 			summary,
 			image,

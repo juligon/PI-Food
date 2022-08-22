@@ -4,13 +4,13 @@ const axios = require("axios");
 const { getAllRecipes, getApiRecipes, getDbRecipes } = require("../controllers/recipes");
 const { Recipe, Diet } = require("../db");
 
-router.get("/", async (req, res) => {         //get a / trae todas las recetas
-	const { name } = req.query;               //si se pasa name por query trae la receta específica
+router.get("/", async (req, res) => {//get a / trae todas las recetas
+	const { title } = req.query; //si se pasa title por query trae la receta específica
 	try {
 		const allRecipes = await getAllRecipes();
-		if (name) {
-			const recipe = await allRecipes.filter((e) =>
-				e.name.toLowerCase().includes(name.toLowerCase())        //para compararlos paso ambos a lower case
+		if (title) {
+			const recipe = await allRecipes.filter(
+				(e) => e.title.toLowerCase().includes(title.toLowerCase()) //para compararlos paso ambos a lower case
 			);
 			recipe.length
 				? res.json(recipe)
