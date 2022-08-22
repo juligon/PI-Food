@@ -10,13 +10,17 @@ const {
 	API_KEY04,
 	API_KEY05,
 	API_KEY06,
+	API_KEY07,
+	API_KEY08,
+	API_KEY09,
+	API_KEY10,
 } = process.env;
 
 const getApiRecipes = async () => {
 	//trae las recetas de la api
 	try {
 		const apiUrl = await axios.get(
-			`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY05}&addRecipeInformation=true&number=${100}`
+			`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY07}&addRecipeInformation=true&number=${100}`
 		);
 		const apiRecipes = await apiUrl.data.results?.map((e) => {
 			//axios trae la info en .data

@@ -10,6 +10,10 @@ const {
 	API_KEY04,
 	API_KEY05,
 	API_KEY06,
+	API_KEY07,
+	API_KEY08,
+	API_KEY09,
+	API_KEY10,
 } = process.env;
 
 const getDiets = async () => {
@@ -33,7 +37,7 @@ const getDiets = async () => {
 	];*/
 	try {
 		const apiUrl = await axios.get(
-			`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY06}&addRecipeInformation=true&number=${100}`
+			`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY08}&addRecipeInformation=true&number=${100}`
 		);
 	
 		const diets = await apiUrl.data.results?.map((e) => e.diets).flat();
