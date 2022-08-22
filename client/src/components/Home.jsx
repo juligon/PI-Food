@@ -5,7 +5,7 @@ import {
 	getRecipes,
 	getDiets,
 	filterRecipesByDiet,
-	orderByName,
+	orderByTitle,
 	orderByScore,
 } from "../actions";
 import { Link } from "react-router-dom";
@@ -16,16 +16,19 @@ import SearchBar from "./SearchBar";
 export default function Home() {
 	const dispatch = useDispatch(); //despacha las actions
 	const allRecipes = useSelector((state) => state.recipes); //almacena en la constante todo lo que haya en el estado recipes
-	const diets = useSelector((state) => state.diets);
-	const [orderName, setOrderName] = useState("");
+	//const diets = useSelector((state) => state.diets);
+	const [orderTitle, setOrderTitle] = useState("");
 	const [orderScore, setOrderScore] = useState("");
 
 	//paginado
 	const [currentPage, setCurrentPage] = useState(1); //creo un estado local, le paso la pagina actual y la seteo para que arranque en 1
-	const [recipesPerPage, setRecipesPerPAge] = useState(9); //un segundo estado local, le paso la cantidad de recetas por pagina (9)
-	const indeOfLastRecipe = currentPage * recipesPerPage; // 9
-	const indexOfFirstRecipe = indeOfLastRecipe - recipesPerPage; // 0
-	const currentRecipes = allRecipes.slice(indexOfFirstRecipe, indeOfLastRecipe);
+	const [recipesPerPage, setRecipesPerPage] = useState(9); //un segundo estado local, le paso la cantidad de recetas por pagina (9)
+	const indexOfLastRecipe = currentPage * recipesPerPage; // 9
+	const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage; // 0
+	const currentRecipes = allRecipes.slice(
+		indexOfFirstRecipe,
+		indexOfLastRecipe
+	);
 	//esta constante se guarda las recetas que se renderizan por pagina
 	//el slice divide el array de todas las recetas desde el indice de la primera receta hasta el indice de la ultima
 	//cada pagina debe contener 9 recetas
@@ -38,7 +41,7 @@ export default function Home() {
 	useEffect(() => {
 		//trae todas las recetas del estado cuando se monta el componente
 		dispatch(getRecipes());
-		dispatch(getDiets());
+		//dispatch(getDiets());
 	}, [dispatch]); //el componente se monta siempre y cuando suceda un dispatch
 
 	function handleClick(e) {
@@ -52,11 +55,11 @@ export default function Home() {
 		dispatch(filterRecipesByDiet(e.target.value));
 	}
 
-	function handleSortByName(e) {
+	function handleSortByTitle(e) {
 		e.preventDefault();
-		dispatch(orderByName(e.target.value));
+		dispatch(orderByTitle(e.target.value));
 		setCurrentPage(1);
-		setOrderName(`In order ${e.target.value}`); //cuando setea la pagina se modifica el estado local y se renderiza
+		setOrderTitle(`In order ${e.target.value}`); //cuando setea la pagina se modifica el estado local y se renderiza
 	}
 
 	function handleSortByScore(e) {
@@ -70,16 +73,9 @@ export default function Home() {
 		<div>
 			<h1>The Hunger App</h1>
 			<Link to="/recipe">Create recipe</Link>
-			<button
-				onClick={(e) => {
-					handleClick(e);
-				}}
-			>
-				RESET RECIPES
-			</button>
-			<SearchBar/>
+			<SearchBar />
 			<div>
-				<select onChange={(e) => handleSortByName(e)}>
+				<select onChange={(e) => handleSortByTitle(e)}>
 					<option value="asc">A to Z</option>{" "}
 					{/*necesito el value para aplicar la logica y que la accion la entienda*/}
 					<option value="desc">Z to A</option>
@@ -101,7 +97,15 @@ export default function Home() {
 					<option value="ketogenic"> Ketogenic</option>
 					<option value="fodmap friendly"> Fodmap friendly</option>
 				</select>
+				<button
+					onClick={(e) => {
+						handleClick(e);
+					}}
+				>
+					Reset recipes
+				</button>
 				<Pagination
+					key={1}
 					recipesPerPage={recipesPerPage}
 					allRecipes={allRecipes.length}
 					pagination={pagination}
@@ -110,7 +114,7 @@ export default function Home() {
 			<div>
 				{currentRecipes?.map((e) => {
 					return (
-						<Card key={e.id} name={e.title} diets={e.diets} image={e.image} />
+						<Card key={e.id} title={e.title} diets={e.diets} image={e.image} />
 					);
 				})}
 			</div>

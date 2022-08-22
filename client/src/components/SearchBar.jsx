@@ -1,28 +1,28 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getRecipesByName } from "../actions";
+import { getRecipesByTitle } from "../actions";
 
 export default function SearchBar() {
 	const dispatch = useDispatch();
-	const [name, setName] = useState("");
+	const [title, setTitle] = useState("");
 
 	function handleInputChange(e) {
 		e.preventDefault();
-		setName(e.target.value); //valor que tiene el input
-		console.log(name);
+		setTitle(e.target.value); //valor que tiene el input
+		console.log(title);
 	}
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		dispatch(getRecipesByName(name));
-		setName("");
+		dispatch(getRecipesByTitle(title));
+		setTitle("");
 	}
 
 	return (
 		<div>
-            <input
-                value={name}
+			<input
+				value={title}
 				type="text"
 				placeholder="Recipe..."
 				onChange={(e) => handleInputChange(e)}

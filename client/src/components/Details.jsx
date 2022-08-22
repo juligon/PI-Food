@@ -5,40 +5,44 @@ import { useEffect } from "react";
 import { getDetails } from "../actions";
 
 export default function Details() {
-    const dispatch = useDispatch();
-    const { id } = useParams();
+	const dispatch = useDispatch();
+	const { id } = useParams();
 
-    useEffect(() => {
-        dispatch(getDetails(id));
-    }, [dispatch]);
+	useEffect(() => {
+		dispatch(getDetails(id));
+	}, [dispatch, id]);
 
-    const myRecipe = useSelector((state) => state.details);
+	const details = useSelector((state) => state.details);
 
-    return (
-        <div>
-            {myRecipe.length > 0 ? 
-                <div>
-                    <h3>{myRecipe[0].name && myRecipe[0].name}</h3>
-                    <h5>Health Score: {myRecipe[0].healthScore && myRecipe[0].healthScore}</h5>
-                    <h5>Summary: {(<p dangerouslySetInnerHTML={{__html: myRecipe[0].summary}}></p>)}</h5>
-                    <img src={myRecipe[0].image} alt="Image not found" />
-                    <h5>Diets: {myRecipe[0].diets &&
-                        myRecipe[0].diets.map((e) => e.name.toUpperCase() + ", ")}
-                    </h5>
-                    <h5>Dish type: {myRecipe[0].dishTypes
-                        ? myRecipe[0].dishTypes.map((d) => d)
-                        : "Dish type not found"}
-                    </h5>
-                    <p>Intructions: {Array.isArray(myRecipe[0].steps)
-                        ? myRecipe[0].steps.map((e) => e.steps.map((f) => f.step))
-                        : myRecipe[0].steps}
-                    </p>
-                </div>  :
-                    <p>Loading...</p>
-                }
-                <Link to="/home">
-                    <button>GO BACK</button>
-            </Link>
-        </div>
-    );
+	return (
+		<div>
+			{details.length > 0 ? (
+				<div>
+					<h3>{details[0].title}</h3>
+					<h5>
+						Health Score: {details[0].healthScore ? details[0].healthScore : 0}
+					</h5>
+					<h5>
+						Summary: <p>{details[0].summary?.replace(/<[^>]+>/g, "")}</p>
+					</h5>
+					<img src={details[0].image} alt="Image not found" />
+					<h5>Diets: {details[0].diets?.map((e) => e)}</h5>
+					<h5>Dish type: {details[0].dishTypes?.map((d) => d)}</h5>
+					<p>
+						Intructions:{" "}
+						{details[0].analyzedInstructions?.steps.map((e, i) => (
+							<li key={i}>
+								{e.number}.{e.steps}
+							</li>
+						))}
+					</p>
+				</div>
+			) : (
+				<p>Loading...</p>
+			)}
+			<Link to="/home">
+				<button>GO BACK</button>
+			</Link>
+		</div>
+	);
 }

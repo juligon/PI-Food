@@ -1,10 +1,14 @@
 import React from "react";
 
-export default function Card({ name, diets, image }) {
+export default function Card({ title, diets, image }) {
 	return (
 		<div>
-			<h3>{name}</h3>
-            <h5>{diets.map((d) => { d })}</h5>
+			<h3>{title}</h3>
+			{diets.map((e) => (
+				<h5>
+					{e.name}
+				</h5>
+			))}
 			<img src={image} alt="Image not found" width="200px" height="250px" />
 		</div>
 	);

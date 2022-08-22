@@ -13,7 +13,7 @@ function rootReducer(state = initialState, action) {
 				recipes: action.payload, //almacena en mi estado recipes los datos que traiga la accion GET_RECIPES
 				allRecipes: action.payload,
 			};
-		case "GET_RECIPES_BY_NAME":
+		case "GET_RECIPES_BY_TITLE":
 			return {
 				...state,
 				recipes: action.payload,
@@ -42,24 +42,24 @@ function rootReducer(state = initialState, action) {
 				...state,
 				recipes: dietsFiltered,
 			};
-		case "ORDER_BY_NAME":
-			let orderByName =
+		case "ORDER_BY_TITLE":
+			let orderByTitle =
 				action.payload === "asc"
 					? state.recipes.sort(function (a, b) {
 							//sort-> compara dos valores y los ordena de menor a mayor o vicecersa
-							if (a.name > b.name) return 1;
-							if (b.name > a.name) return -1;
+							if (a.title > b.title) return 1;
+							if (b.title > a.title) return -1;
 							return 0; //si son iguales
 					  })
 					: state.recipes.sort(function (a, b) {
 							//si es descendente
-							if (a.name > b.name) return -1;
-							if (b.name > a.name) return 1;
+							if (a.title > b.title) return -1;
+							if (b.title > a.title) return 1;
 							return 0;
 					  });
 			return {
 				...state,
-				recipes: orderByName,
+				recipes: orderByTitle,
 			};
 		case "ORDER_BY_SCORE":
 			let orderByScore =

@@ -11,12 +11,14 @@ export function getRecipes() {
 	};
 };
 
-export function getRecipesByName(payload) {
+export function getRecipesByTitle(payload) {
     return async function (dispatch) {
         try {
-            var json = await axios.get(`http://localhost:3001/recipes?name=${payload}`);
+            var json = await axios.get(
+							`http://localhost:3001/recipes?title=${payload}`
+						);
             return dispatch({
-                type: "GET_RECIPES_BY_NAME",
+                type: "GET_RECIPES_BY_TITLE",
                 payload: json.data
             })
 		} catch (error) {
@@ -41,7 +43,7 @@ export function getDetails(id) {
             var json = await axios.get(`http://localhost:3001/recipes/${id}`);
             return dispatch({ type: "GET_DETAIL", payload: json.data });
         } catch (error) {
-            console.log(err);
+            console.log(error);
         };
     };
 }
@@ -60,9 +62,9 @@ export function filterRecipesByDiet(payload) {
     }
 };
 
-export function orderByName(payload) {
+export function orderByTitle(payload) {
     return {
-        type: "ORDER_BY_NAME",
+        type: "ORDER_BY_TITLE",
         payload
     }
 };
