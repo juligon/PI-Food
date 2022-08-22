@@ -9,6 +9,7 @@ const {
 	API_KEY03,
 	API_KEY04,
 	API_KEY05,
+	API_KEY06,
 } = process.env;
 
 const getDiets = async () => {
@@ -30,20 +31,23 @@ const getDiets = async () => {
 		"low fodmap",
 		"whole 30",
 	];*/
-
-	const apiUrl = await axios.get(
-		`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY01}&addRecipeInformation=true&number=${100}`
-	);
+	try {
+		const apiUrl = await axios.get(
+			`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY06}&addRecipeInformation=true&number=${100}`
+		);
 	
-	const diets = await apiUrl.data.results?.map((e) => e.diets).flat();
+		const diets = await apiUrl.data.results?.map((e) => e.diets).flat();
 
-	diets.forEach((e) => {                      //por c/elemento del array creo el tipo de dieta en db sin repetirse
-		Diet.findOrCreate({                      
-			where: { name: e },
+		diets.forEach((e) => {                      //por c/elemento del array creo el tipo de dieta en db sin repetirse
+			Diet.findOrCreate({
+				where: { name: e },
+			});
 		});
-	});
 
-	return await Diet.findAll();
+		return await Diet.findAll();
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 module.exports = { getDiets };
