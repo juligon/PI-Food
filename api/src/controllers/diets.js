@@ -37,7 +37,7 @@ const getDiets = async () => {
 	];*/
 	try {
 		const apiUrl = await axios.get(
-			`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY08}&addRecipeInformation=true&number=${100}`
+			`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY09}&addRecipeInformation=true&number=${100}`
 		);
 	
 		const diets = await apiUrl.data.results?.map((e) => e.diets).flat();
