@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
 		});
 
 		newRecipe.addDiet(dbDiet);
-		res.send("Recipe created succesfully");
+		res.send("Recipe succesfully created");
 	} catch (error) {
 		console.log(error);
 	}
