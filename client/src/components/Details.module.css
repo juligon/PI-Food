@@ -1,0 +1,103 @@
+.container {
+    display: flex;
+    min-height: 100vh;
+    min-width: 100vh;
+    background-color: white;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+
+@font-face {
+    font-family: 'Oswald-Demibold';
+    src: url("./Typos/Oswald-DemiBold.ttf");
+
+    font-family: 'Roboto-Bold';
+    src: url("./Typos/Roboto-Bold.ttf");
+}
+
+.title{
+    font-family: 'Roboto-Bold' ;
+    font-size: 36px;
+    text-align: left;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.summary{
+    font-family: Times, serif;
+    font-size: 16px;
+    text-align: left;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.instructions{
+    font-family: Times, serif;
+    font-size: 14px;
+    text-align: left;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.items{
+    font-family:Times, serif;
+    font-size: 16px;
+    text-align: left;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.image{
+    width: 1200px;
+    height: 500px;
+    margin: 50px;
+}
+
+.loading{
+    display: flex;
+    align-content: center;
+    font-family: 'Roboto-Bold';
+    font-size: 16px;
+
+}
+
+.button {
+    display: block;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    float: none;
+    z-index: auto;
+    width: 100px;
+    height: 15px;
+    position: static;
+    cursor: pointer;
+    opacity: 1;
+    margin: 10px;
+    padding: 9px 20px;
+    overflow: hidden;
+    border: 1px solid;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    font: normal 16px/1 'Roboto-Bold';
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    word-spacing: 2px;
+    background: #ffffff;
+    -webkit-box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.8);
+    box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.8);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+    -webkit-transform: none;
+    transform: none;
+    -webkit-transform-origin: 50% 50% 0;
+    transform-origin: 50% 50% 0;
+    align-self: center;
+    margin-left: 600px;
+}

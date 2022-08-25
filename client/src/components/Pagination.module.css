@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url("./Typos/Roboto-Regular.ttf");
+}
+
+.pagination {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 12px;
+    justify-content: center;
+    align-items: center;
+    background-position: center center;
+    flex-direction: column;
+    align-self: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.li {
+    display: inline;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+
+}

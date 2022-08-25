@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getDetails } from "../actions";
+import style from "./Details.module.css";
 
 export default function Details() {
 	const dispatch = useDispatch();
@@ -12,36 +13,44 @@ export default function Details() {
 		dispatch(getDetails(id));
 	}, [dispatch, id]);
 
-	const details = useSelector((state) => state.details);
+	const recipe = useSelector((state) => state.details);
 
 	return (
-		<div>
-			{details.length > 0 ? (
+		<div className={style.container}>
+			{recipe.length > 0 ? (
 				<div>
-					<h3>{details[0].title}</h3>
-					<h5>
-						Health Score: {details[0].healthScore ? details[0].healthScore : 0}
+					<img
+						src={recipe[0].image}
+						alt="Image not found"
+						className={style.image}
+					/>
+					<h3 className={style.title}>{recipe[0].title}</h3>
+					<h5 className={style.items}>
+						Health Score: {recipe[0].healthScore ? recipe[0].healthScore : 0}
 					</h5>
-					<h5>
-						Summary: <p>{details[0].summary?.replace(/<[^>]+>/g, "")}</p>
+					<h5 className={style.summary}>
+						Summary: <p>{recipe[0].summary?.replace(/<[^>]+>/g, "")}</p>
 					</h5>
-					<img src={details[0].image} alt="Image not found" />
-					<h5>Diets: {details[0].diets?.map((e) => e)}</h5>
-					<h5>Dish type: {details[0].dishTypes?.map((d) => d)}</h5>
-					<p>
-						Intructions:{" "}
-						{details[0].analyzedInstructions?.steps.map((e, i) => (
-							<li key={i}>
-								{e.number}.{e.steps}
-							</li>
-						))}
+					<h5 className={style.items}>
+						Diets: {recipe[0].diets?.map((e) => e).join(", ")}
+					</h5>
+					<h5 className={style.items}>
+						Dish type: {recipe[0].dishTypes?.map((e) => e).join(", ")}
+					</h5>
+					<p className={style.instructions}>
+						Intructions:
+						{recipe[0].analyzedInstructions?.steps.map((e) => {
+							<li>
+								{e.number}. {e.step}
+							</li>;
+						})}
 					</p>
 				</div>
 			) : (
-				<p>Loading...</p>
+				<p className={style.loading}>Loading...</p>
 			)}
 			<Link to="/home">
-				<button>GO BACK</button>
+				<button className={style.button}>go back!</button>
 			</Link>
 		</div>
 	);

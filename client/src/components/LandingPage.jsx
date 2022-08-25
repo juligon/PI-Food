@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import style from "./LandingPage.module.css";
 
 export default function LandingPage() {
 	return (
-		<div>
-			<h1>Let The Hunger Games Begin!</h1>
+		<div className={style.landing}>
+			<h1 className={style.title}>LET THE HUNGER GAMES BEGIN!</h1>
 			<Link to="/home">
-				<button>START</button>
+				<button className={style.button}>start</button>
 			</Link>
 		</div>
 	);

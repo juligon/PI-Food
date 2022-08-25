@@ -37,15 +37,15 @@ export function getDiets() {
     }
 };
 
-export function getDetails(id) {
+export function getDetails(id) { 
     return async function (dispatch) {
-        try {
-            var json = await axios.get(`http://localhost:3001/recipes/${id}`);
-            return dispatch({ type: "GET_DETAIL", payload: json.data });
-        } catch (error) {
-            console.log(error);
-        };
-    };
+	try {
+		var json = await axios.get(`http://localhost:3001/recipes/${id}`);
+		return dispatch({ type: "GET_DETAILS", payload: json.data });
+	} catch (error) {
+		console.log(error);
+	}
+};
 }
 
 export function postRecipe(payload) {

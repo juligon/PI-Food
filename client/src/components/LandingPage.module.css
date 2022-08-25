@@ -1,0 +1,79 @@
+.landing {
+    display: flex;
+    min-height: 100vh;
+    min-width: 100vh;
+    background-image: url("../components/Imágenes/landing.gif");
+    background-size: cover;
+    background-position: center center;
+    justify-content: center;
+    align-self: center;
+}
+
+@font-face {
+    font-family: 'Oswald-Bold';
+    src: url("./Typos/Oswald-Bold.ttf");
+
+    font-family: 'Oswald-Demibold';
+    src: url("./Typos/Oswald-DemiBold.ttf");
+
+    font-family: 'Roboto';
+    src: url("./Typos/Roboto-Regular.ttf");
+
+    font-family: 'Roboto-Bold';
+    src: url("./Typos/Roboto-Bold.ttf");
+}
+
+.title {
+    color: white;
+    font-family: 'Oswald-Bold', Impact;
+    -webkit-text-stroke: 1px black;
+    font-size: 60px;
+    font-weight: bold;
+    text-align: center;
+    align-self: center;
+    -ms-flex-item-align: center; 
+    position: relative;
+    margin-left: 450px;
+    ;
+
+}
+
+.button {
+    display: block;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    float: none;
+    z-index: auto;
+    width: 120px;
+    height: auto;
+    position: static;
+    cursor: pointer;
+    opacity: 1;
+    margin: 0;
+    padding: 9px 20px;
+    overflow: hidden;
+    border: 1px solid;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    font: normal 16px/1 'Roboto-Bold';
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    word-spacing: 2px;
+    background: #ffffff;
+    -webkit-box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.8);
+    box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.8);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+    -webkit-transform: none;
+    transform: none;
+    -webkit-transform-origin: 50% 50% 0;
+    transform-origin: 50% 50% 0;
+    margin-top: 300px;
+    margin-right: 500px;
+}

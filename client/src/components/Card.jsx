@@ -1,15 +1,17 @@
 import React from "react";
+import style from "./Card.module.css";
+import { Link } from "react-router-dom";
 
-export default function Card({ title, diets, image }) {
+export default function Card({ title, diets, image, id }) {
 	return (
-		<div>
-			<h3>{title}</h3>
-			{diets.map((e) => (
-				<h5>
-					{e.name}
-				</h5>
+		<div className={style.card}>
+			<Link to={`recipes/${id}`}>
+				<h4 className={style.title}>{title}</h4>
+			</Link>
+			{diets?.map((e) => (
+				<p className={style.diets}>{e[0].toUpperCase() + e.slice(1)}</p>
 			))}
-			<img src={image} alt="Image not found" width="200px" height="250px" />
+			<img src={image} alt="Image not found" className={style.image} />
 		</div>
 	);
 }

@@ -11,7 +11,9 @@ import {
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import Pagination from "./Pagination";
-import SearchBar from "./SearchBar";
+import NavBar from "./NavBar";
+import style from "./Home.module.css"
+import logo from "./Logo/LogoPi.png";
 
 export default function Home() {
 	const dispatch = useDispatch(); //despacha las actions
@@ -70,54 +72,61 @@ export default function Home() {
 	}
 
 	return (
-		<div>
-			<h1>The Hunger App</h1>
-			<Link to="/recipe">Create recipe</Link>
-			<SearchBar />
+		<div className={style.container}>
 			<div>
-				<select onChange={(e) => handleSortByTitle(e)}>
-					<option value="asc">A to Z</option>{" "}
+				<img src={logo} className={style.logo} />
+			</div>
+			<NavBar />
+			<div>
+				<select onChange={(e) => handleSortByTitle(e)} className={style.select}>
+					<option value="all">Order by Name</option>
+					<option value="asc">A to Z</option>
 					{/*necesito el value para aplicar la logica y que la accion la entienda*/}
 					<option value="desc">Z to A</option>
 				</select>
-				<select onChange={(e) => handleSortByScore(e)}>
-					<option value="max"> HealthScore: Máx to Min </option>
-					<option value="min"> HealthScore: Min to Máx </option>
+				<select onChange={(e) => handleSortByScore(e)} className={style.select}>
+					<option value="all">Order by HealthScore</option>
+					<option value="max">Máx to Min</option>
+					<option value="min">Min to Máx</option>
 				</select>
-				<select onChange={(e) => handleFilterByDiet(e)}>
-					<option value="all"> All diets</option>
-					<option value="gluten free"> Gluten free</option>
-					<option value="dairy free"> Dairy free</option>
-					<option value="lacto ovo vegetarian"> Lacto ovo vegetarian</option>
-					<option value="vegan"> Vegan</option>
-					<option value="paleolithic"> Paleolithic</option>
-					<option value="primal"> Primal</option>
-					<option value="whole 30"> Whole 30</option>
-					<option value="pescatarian"> Pescatarian</option>
-					<option value="ketogenic"> Ketogenic</option>
-					<option value="fodmap friendly"> Fodmap friendly</option>
+				<select
+					onChange={(e) => handleFilterByDiet(e)}
+					className={style.select}
+				>
+					<option value="all">Select diet</option>
+					<option value="gluten free">Gluten free</option>
+					<option value="dairy free">Dairy free</option>
+					<option value="lacto ovo vegetarian">Lacto ovo vegetarian</option>
+					<option value="vegan">Vegan</option>
+					<option value="paleolithic">Paleolithic</option>
+					<option value="primal">Primal</option>
+					<option value="whole 30">Whole 30</option>
+					<option value="pescatarian">Pescatarian</option>
+					<option value="ketogenic">Ketogenic</option>
+					<option value="fodmap friendly">Fodmap friendly</option>
 				</select>
 				<button
+					className={style.button}
 					onClick={(e) => {
 						handleClick(e);
 					}}
 				>
-					Reset recipes
+					reset
 				</button>
-				<Pagination
-					key={1}
-					recipesPerPage={recipesPerPage}
-					allRecipes={allRecipes.length}
-					pagination={pagination}
-				/>
 			</div>
-			<div>
+			<div className={style.cards}>
 				{currentRecipes?.map((e) => {
 					return (
 						<Card key={e.id} title={e.title} diets={e.diets} image={e.image} />
 					);
 				})}
 			</div>
+			<Pagination
+				key={1}
+				recipesPerPage={recipesPerPage}
+				allRecipes={allRecipes.length}
+				pagination={pagination}
+			/>
 		</div>
 	);
 }

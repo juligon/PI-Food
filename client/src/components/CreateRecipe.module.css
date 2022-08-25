@@ -1,0 +1,117 @@
+@font-face {
+    font-family: 'Oswald-Demibold';
+    src: url("./Typos/Oswald-DemiBold.ttf");
+
+    font-family: 'Roboto-Bold';
+    src: url("./Typos/Roboto-Bold.ttf");
+}
+
+.button {
+    display: block;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    float: none;
+    z-index: auto;
+    width: 100px;
+    height: 15px;
+    position: static;
+    cursor: pointer;
+    opacity: 1;
+    margin: 10px;
+    padding: 9px 20px;
+    overflow: hidden;
+    border: 1px solid;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    font: normal 16px/1 'Roboto-Bold';
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    word-spacing: 2px;
+    background: #ffffff;
+    -webkit-box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.8);
+    box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.8);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+    -webkit-transform: none;
+    transform: none;
+    -webkit-transform-origin: 50% 50% 0;
+    transform-origin: 50% 50% 0;
+    align-self: center;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    min-width: 100vh;
+    margin: 0px;
+    padding: 0;
+    background: #51FC7B;
+}
+
+.form {
+    margin: 100px auto;
+    margin-right: 350px;
+    width: 600px;
+    background-color: #9DFDB5;
+    padding: 2px;
+    
+
+}
+
+h3 {
+    font-family: 'Roboto-Bold';
+    font-size: 24px;
+    text-align: center;
+}
+
+.input, textarea {
+    padding: 5px;
+    width: 60%;
+    border: 1px solid black;
+    background-color: #f1f1f1;
+}
+
+.label {
+    margin: 15px;
+    font-family: 'Roboto';
+    font-size: 14px;
+    display: block;
+    
+}
+
+.ul{
+    list-style: none;
+}
+
+.li{
+    margin: 10px;
+}
+
+.btn{
+    margin-top: 20px;
+}
+
+.btnForm{
+    width: 60%;
+    height: 35px;
+    margin: 15%;
+    background-color: #000000;
+    color: white;
+}
+
+.select {
+    width: 60%;
+    height: 15px;
+    margin: 10px;
+    padding: 16px 20px;
+    border: 1px solid black;
+    background-color: #f1f1f1;
+}
+
+

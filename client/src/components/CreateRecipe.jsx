@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDiets, postRecipe } from "../actions";
+import style from "./CreateRecipe.module.css";
 
 function validate(input) {
 	let errors = {};
@@ -75,70 +76,75 @@ export default function CreateRecipe() {
 		});
 		history.push("/home"); //redirige al home
 	}
-
+	
 	return (
-		<div>
+		<div className={style.container}>
 			<Link to="/home">
-				<button>Go back!</button>
+				<button className={style.button}>Go back!</button>
 			</Link>
-			<h1>Create your recipe</h1>
-			<form onSubmit={(e) => handleSubmit(e)}>
+			<form onSubmit={(e) => handleSubmit(e)} className={style.form}>
 				<div>
-					<label>Recipe's title:</label>
+					<h3 className={style.h3}>Create your recipe</h3>
+					<label className={style.label}>Title: </label>
 					<input
 						type="text"
 						value={input.title}
 						name="title"
 						onChange={(e) => handleChange(e)}
+						className={style.input}
 					/>
 					{errors.title && <p>{errors.title}</p>}
 				</div>
 				<div>
-					<label>Summary:</label>
+					<label className={style.label}>Summary: </label>
 					<textarea
 						type="text"
 						value={input.summary}
 						name="summary"
 						onChange={(e) => handleChange(e)}
+						className={style.input}
 					/>
 					{errors.summary && <p> {errors.summary}</p>}
 				</div>
 				<div>
-					<label>Image:</label>
+					<label className={style.label}>Image: </label>
 					<input
 						type="text"
 						value={input.image}
 						name="image"
 						placeholder="URL image"
 						onChange={(e) => handleChange(e)}
+						className={style.input}
 					/>
 				</div>
 				<div>
-					<label>Health Score:</label>
+					<label className={style.label}>Health Score: </label>
 					<input
 						type="number"
 						value={input.healthScore}
 						name="healthScore"
 						onChange={(e) => handleChange(e)}
+						className={style.input}
 					/>
 					{errors.healthScore && <p> {errors.healthScore}</p>}
 				</div>
 				<div>
-					<label>Intructions:</label>
+					<label className={style.label}>Intructions: </label>
 					<textarea
 						type="text"
 						value={input.instructions}
 						name="instructions"
 						onChange={(e) => handleChange(e)}
+						className={style.textarea}
 					/>
 				</div>
-				<label>Select diets </label>
-				<select onChange={(e) => handleSelect(e)}>
+				<label className={style.label}>Select diets </label>
+				<select onChange={(e) => handleSelect(e)} className={style.select}>
 					{diets.map((d) => (
 						<option value={d.name}>{d.name}</option>
 					))}
 				</select>
-				<ul>
+				<ul className={style.ul}>
 					<li>{input.diets.map((e) => e.toUpperCase() + ", ")}</li>
 				</ul>
 				{input.diets.map((e) => (
@@ -147,8 +153,10 @@ export default function CreateRecipe() {
 						<button onClick={() => handleDelete(e)}>X</button>
 					</div>
 				))}
-				<button type="submit">Create recipe</button>
+				<button type="submit" className={style.btnForm}>
+					Create recipe
+				</button>
 			</form>
 		</div>
 	);
-}
+};
