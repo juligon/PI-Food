@@ -13,19 +13,14 @@
     font-family: 'Oswald-Bold';
     src: url("./Typos/Oswald-Bold.ttf");
 
-    font-family: 'Oswald-Demibold';
-    src: url("./Typos/Oswald-DemiBold.ttf");
-
-    font-family: 'Roboto';
-    src: url("./Typos/Roboto-Regular.ttf");
-
     font-family: 'Roboto-Bold';
     src: url("./Typos/Roboto-Bold.ttf");
+
 }
 
 .title {
     color: white;
-    font-family: 'Oswald-Bold', Impact;
+    font-family: Impact;
     -webkit-text-stroke: 1px black;
     font-size: 60px;
     font-weight: bold;

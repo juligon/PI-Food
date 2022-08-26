@@ -3,12 +3,10 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	getRecipes,
-	getDiets,
 	filterRecipesByDiet,
 	orderByTitle,
 	orderByScore,
 } from "../actions";
-import { Link } from "react-router-dom";
 import Card from "./Card";
 import Pagination from "./Pagination";
 import NavBar from "./NavBar";
@@ -111,7 +109,7 @@ export default function Home() {
 						handleClick(e);
 					}}
 				>
-					reset
+					Reset
 				</button>
 			</div>
 			<div className={style.cards}>

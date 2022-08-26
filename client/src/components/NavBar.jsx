@@ -50,7 +50,7 @@ export default function NavBar() {
 							type="submit"
 							onClick={(e) => handleSubmit(e)}
 						>
-							search
+							Search
 						</button>
 					</li>
 				</ul>

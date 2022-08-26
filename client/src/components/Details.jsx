@@ -21,7 +21,7 @@ export default function Details() {
 				<div>
 					<img
 						src={recipe[0].image}
-						alt="Image not found"
+						alt="Not found"
 						className={style.image}
 					/>
 					<h3 className={style.title}>{recipe[0].title}</h3>
@@ -50,7 +50,7 @@ export default function Details() {
 				<p className={style.loading}>Loading...</p>
 			)}
 			<Link to="/home">
-				<button className={style.button}>go back!</button>
+				<button className={style.button}>Go back!</button>
 			</Link>
 		</div>
 	);

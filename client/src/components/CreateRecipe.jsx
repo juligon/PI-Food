@@ -84,12 +84,12 @@ export default function CreateRecipe() {
 			</Link>
 			<form onSubmit={(e) => handleSubmit(e)} className={style.form}>
 				<div>
-					<h3 className={style.h3}>Create your recipe</h3>
+					<h3 className={style.h3}>Create your recipe!</h3>
 					<label className={style.label}>Title: </label>
 					<input
 						type="text"
-						value={input.title}
 						name="title"
+						value={input.title}
 						onChange={(e) => handleChange(e)}
 						className={style.input}
 					/>
@@ -98,21 +98,21 @@ export default function CreateRecipe() {
 				<div>
 					<label className={style.label}>Summary: </label>
 					<textarea
-						type="text"
-						value={input.summary}
+						type="textarea"
 						name="summary"
+						value={input.summary}
 						onChange={(e) => handleChange(e)}
 						className={style.input}
 					/>
-					{errors.summary && <p> {errors.summary}</p>}
+					{errors.summary && <p>{errors.summary}</p>}
 				</div>
 				<div>
 					<label className={style.label}>Image: </label>
 					<input
 						type="text"
-						value={input.image}
 						name="image"
-						placeholder="URL image"
+						value={input.image}
+						placeholder="image URL"
 						onChange={(e) => handleChange(e)}
 						className={style.input}
 					/>
@@ -121,36 +121,42 @@ export default function CreateRecipe() {
 					<label className={style.label}>Health Score: </label>
 					<input
 						type="number"
-						value={input.healthScore}
 						name="healthScore"
+						value={input.healthScore}
 						onChange={(e) => handleChange(e)}
 						className={style.input}
 					/>
-					{errors.healthScore && <p> {errors.healthScore}</p>}
+					{errors.healthScore && <p>{errors.healthScore}</p>}
 				</div>
 				<div>
 					<label className={style.label}>Intructions: </label>
 					<textarea
-						type="text"
-						value={input.instructions}
+						type="textarea"
 						name="instructions"
+						value={input.instructions}
 						onChange={(e) => handleChange(e)}
 						className={style.textarea}
 					/>
 				</div>
 				<label className={style.label}>Select diets </label>
 				<select onChange={(e) => handleSelect(e)} className={style.select}>
-					{diets.map((d) => (
-						<option value={d.name}>{d.name}</option>
+					{diets.map((d, index) => (
+						<option key={index} value={d.name}>
+							{d.name}
+						</option>
 					))}
 				</select>
 				<ul className={style.ul}>
-					<li>{input.diets.map((e) => e.toUpperCase() + ", ")}</li>
+					<li className={style.li}>
+						{input.diets.map((e) => e[0].toUpperCase() + e.slice(1) + ", ")}
+					</li>
 				</ul>
 				{input.diets.map((e) => (
 					<div>
-						<p>{e}</p>
-						<button onClick={() => handleDelete(e)}>X</button>
+						<p className={style.p}>{e}</p>
+						<button onClick={() => handleDelete(e)} className={style.delete}>
+							X
+						</button>
 					</div>
 				))}
 				<button type="submit" className={style.btnForm}>

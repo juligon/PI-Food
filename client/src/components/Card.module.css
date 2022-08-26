@@ -22,20 +22,26 @@
     font-family: 'Oswald-Medium';
     src: url("./Typos/Oswald-Medium.ttf");
 
-    font-family: 'Roboto';
-    src: url("./Typos/Roboto-Regular.ttf");
+    font-family: 'Roboto-Bold';
+    src: url("./Typos/Roboto-Bold.ttf");
     
 }
 
 .diets {
     line-height: 0;
-    font-family: 'Roboto';
+    font-family:Georgia, 'Times New Roman', Times, serif;
     font-size: 10px;
 }
 
 .title {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 14px;
+    font-family: 'Roboto-Bold';
+    text-decoration: none;
+    font-size: 13px;
+    color: black;
     margin-left: 20px;
     margin-right: 20px;
-    }
+}
+
+.link{
+    text-decoration: none;
+}
