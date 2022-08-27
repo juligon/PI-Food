@@ -10,6 +10,7 @@ import {
 import Card from "./Card";
 import Pagination from "./Pagination";
 import NavBar from "./NavBar";
+import { Link } from "react-router-dom";
 import style from "./Home.module.css"
 import logo from "./Logo/LogoPi.png";
 
@@ -77,8 +78,8 @@ export default function Home() {
 			<NavBar />
 			<div>
 				<select onChange={(e) => handleSortByTitle(e)} className={style.select}>
-					<option value="all" selected={true} disabled="disabled">
-						Order by Title
+					<option value="all" default disabled="disabled">
+						Alphabetical Order
 					</option>
 					<option value="asc">A to Z</option>
 					{/*necesito el value para aplicar la logica y que la accion la entienda*/}
@@ -121,7 +122,14 @@ export default function Home() {
 			<div className={style.cards}>
 				{currentRecipes?.map((e) => {
 					return (
-						<Card key={e.id} title={e.title} diets={e.diets} image={e.image} />
+						<Link to={`recipes/${e.id}`} className={style.link}>
+							<Card
+								key={e.id}
+								title={e.title}
+								diets={e.diets}
+								image={e.image}
+							/>
+						</Link>
 					);
 				})}
 			</div>
