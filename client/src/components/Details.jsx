@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getDetails } from "../actions";
+import { getDetails, cleanDetail } from "../actions";
 import style from "./Details.module.css";
 
 export default function Details() {
@@ -11,6 +11,7 @@ export default function Details() {
 
 	useEffect(() => {
 		dispatch(getDetails(id));
+		dispatch(cleanDetail());
 	}, [dispatch, id]);
 
 	const recipe = useSelector((state) => state.details);

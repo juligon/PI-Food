@@ -8,6 +8,7 @@ export const POST_RECIPE = "POST_RECIPE";
 export const FILTER_BY_DIET = "FILTER_BY_DIET";
 export const ORDER_BY_TITLE = "ORDER_BY_TITLE";
 export const ORDER_BY_SCORE = "ORDER_BY_SCORE";
+export const CLEAN_DETAIL = "CLEAN_DETAIL";
 
 //mediante las actions se genera la conexión front y back
 export function getRecipes() {
@@ -97,5 +98,11 @@ export function orderByScore(payload) {
 	return {
 		type: ORDER_BY_SCORE,
 		payload,
+	};
+}
+
+export function cleanDetail() {
+	return {
+		type: CLEAN_DETAIL,
 	};
 }

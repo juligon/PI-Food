@@ -7,6 +7,7 @@ import {
 	FILTER_BY_DIET,
 	ORDER_BY_TITLE,
 	ORDER_BY_SCORE,
+	CLEAN_DETAIL,
 } from "../actions";
 
 const initialState = {
@@ -93,6 +94,11 @@ function rootReducer(state = initialState, action) {
 				...state,
 				recipes: orderByScore,
 			};
+		case CLEAN_DETAIL:
+			return {
+				...state,
+				details: [],
+			}
 		default:
 			return { ...state };
 	}
