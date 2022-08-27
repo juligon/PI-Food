@@ -18,31 +18,29 @@ const {
 	API_KEY12,
 	API_KEY13,
 	API_KEY14,
-	API_KEY15
+	API_KEY15,
+	API_KEY16,
+	API_KEY17,
+	API_KEY18,
+	API_KEY19,
+	API_KEY20,
 } = process.env;
 
-const getApiRecipes = async () => {
-	//trae las recetas de la api
+const getApiRecipes = async () => { //trae las recetas de la api
 	try {
 		const apiUrl = await axios.get(
-			`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY15}&addRecipeInformation=true&number=${100}`
+			`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY03}&addRecipeInformation=true&number=${100}`
 		);
-		const apiRecipes = await apiUrl.data.results?.map((e) => {
-			//axios trae la info en .data
-			return {
-				//mapeo solo la info que necesito
+		const apiRecipes = await apiUrl.data.results?.map((e) => { //axios trae la info en .data
+			return { //mapeo solo la info que necesito
 				id: e.id,
 				title: e.title,
 				image: e.image,
 				healthScore: e.healthScore,
 				summary: e.summary,
-				diets: e.diets.map((f) => f), //es un array de diets
-				dishTypes: e.dishTypes.map((f) => f),
-				instructions: e.analyzedInstructions[0]?.steps.map((f) => ({
-					//array de objetos
-					number: f.number, //mapeo cada paso con su respectivo
-					step: f.step, //numero y texto
-				})),
+				diets: e.diets?.map((f) => { return { name: f }}), //es un array de diets
+				dishTypes: e.dishTypes.map((f) => { return { name: f }}),
+				instructions: e.analyzedInstructions,
 			};
 		});
 		return apiRecipes;
@@ -51,8 +49,7 @@ const getApiRecipes = async () => {
 	}
 };
 
-const getDbRecipes = async () => {
-	//trae las recetas de la db
+const getDbRecipes = async () => {//trae las recetas de la db
 	try {
 		return await Recipe.findAll({
 			include: {
@@ -68,8 +65,7 @@ const getDbRecipes = async () => {
 	}
 };
 
-const getAllRecipes = async () => {
-	//trae todas las recetas
+const getAllRecipes = async () => {//trae todas las recetas
 	try {
 		const apiRecipes = await getApiRecipes();
 		const dbRecipes = await getDbRecipes();

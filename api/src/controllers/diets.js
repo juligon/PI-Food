@@ -1,4 +1,4 @@
-const { Recipe, Diet } = require("../db");
+const { Diet } = require("../db");
 require("dotenv").config();
 const axios = require("axios");
 const {
@@ -18,36 +18,40 @@ const {
 	API_KEY12,
 	API_KEY13,
 	API_KEY14,
-	API_KEY15
+	API_KEY15,
+	API_KEY16,
+	API_KEY17,
+	API_KEY18,
+	API_KEY19,
+	API_KEY20,
 } = process.env;
 
 const getDiets = async () => {
-	/*const findDiets = await Diet.findAll();
-	if (findDiets.length) {
-		return findDiets;
-	}
-	const diets = [
-		"gluten free",
-		"dairy free",
-		"ketogenic",
-		"vegetarian",
-		"lacto vegetarian",
-		"ovo vegetarian",
-		"vegan",
-		"pescatarian",
-		"paleo",
-		"primal",
-		"low fodmap",
-		"whole 30",
-	];*/
 	try {
-		const apiUrl = await axios.get(
+		const findDiets = await Diet.findAll();
+		if (findDiets.length) {
+			return findDiets;
+		}
+		const diets = [
+			"gluten free",
+			"dairy free",
+			"paleolithic",
+			"ketogenic",
+			"lacto ovo vegetarian",
+			"vegan",
+			"pescatarian",
+			"primal",
+			"fodmap friendly",
+			"whole 30",
+		];
+
+		/*const apiUrl = await axios.get(
 			`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=${100}`
 		);
-	
-		const diets = await apiUrl.data.results?.map((e) => e.diets).flat();
 
-		diets.forEach((e) => {                      //por c/elemento del array creo el tipo de dieta en db sin repetirse
+		const diets = await apiUrl.data.results?.map((e) => e.diets).flat();*/
+		
+		diets.forEach((e) => { //por c/elemento del array creo el tipo de dieta en db sin repetirse
 			Diet.findOrCreate({
 				where: { name: e },
 			});

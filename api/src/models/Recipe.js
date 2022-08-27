@@ -28,8 +28,8 @@ module.exports = (sequelize) => {
 			type: DataTypes.TEXT,
 		},
 		createdInDb: {
-			//las recetas que cree el usuario y se almacenan en db van a contener
-			type: DataTypes.BOOLEAN, //esta propiedad
+			//las recetas que cree el usuario y se almacenan en db van a contener esta propiedad
+			type: DataTypes.BOOLEAN, 
 			allowNull: false,
 			defaultValue: true,
 		},

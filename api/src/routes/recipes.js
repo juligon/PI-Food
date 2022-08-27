@@ -1,8 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const axios = require("axios");
 const { getAllRecipes, getApiRecipes, getDbRecipes } = require("../controllers/recipes");
-const { Recipe, Diet } = require("../db");
 
 router.get("/", async (req, res) => {//get a / trae todas las recetas
 	const { title } = req.query; //si se pasa title por query trae la receta específica
