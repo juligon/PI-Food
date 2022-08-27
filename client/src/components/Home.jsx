@@ -77,7 +77,7 @@ export default function Home() {
 			<NavBar />
 			<div>
 				<select onChange={(e) => handleSortByTitle(e)} className={style.select}>
-					<option value="all" default disabled="disabled">
+					<option value="all" selected={true} disabled="disabled">
 						Order by Title
 					</option>
 					<option value="asc">A to Z</option>
