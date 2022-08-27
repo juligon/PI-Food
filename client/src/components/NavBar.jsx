@@ -1,9 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { getRecipesByTitle } from "../actions";
-import logo from "./Logo/LogoPi.png";
 import style from "./NavBar.module.css";
 
 export default function NavBar() {
@@ -13,13 +11,22 @@ export default function NavBar() {
 	function handleInputChange(e) {
 		e.preventDefault();
 		setTitle(e.target.value); //valor que tiene el input
-		console.log(title);
+		console.log(title)
 	}
 
 	function handleSubmit(e) {
-		e.preventDefault();
-		dispatch(getRecipesByTitle(title));
-		setTitle("");
+		try {
+			if (title.length) {
+				e.preventDefault();
+				dispatch(getRecipesByTitle(title));
+				setTitle("");
+			} else {
+				alert('The field is empty!')
+			}
+		} catch (error) {
+			console.log(error)
+		}
+
 	}
 
 	return (
@@ -37,11 +44,11 @@ export default function NavBar() {
 					</li>
 					<li className={style.li}>
 						<input
-							className={style.input}
 							value={title}
 							type="text"
 							placeholder="Find a recipe..."
 							onChange={(e) => handleInputChange(e)}
+							className={style.input}
 						/>
 					</li>
 					<li className={style.li}>

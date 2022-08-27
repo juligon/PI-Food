@@ -5,18 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDiets, postRecipe } from "../actions";
 import style from "./CreateRecipe.module.css";
 
-function validate(input) {
-	let errors = {};
-	if (!input.title) {
-		errors.title = "The recipe's title is required";
-	} else if (!input.summary) {
-		errors.summary = "Summary is required";
-	} else if (input.healthScore > 100) {
-		errors.healthScore = "Health score must be lower than 100";
-	}
-	return errors;
-}
-
 export default function CreateRecipe() {
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -38,12 +26,12 @@ export default function CreateRecipe() {
 	function handleChange(e) {
 		setInput({
 			...input,
-			[e.target.title]: e.target.value, //toma el valor del input y lo pasa al estado
+			[e.target.name]: e.target.value, //toma el valor del input y lo pasa al estado
 		});
 		setErrors(
 			validate({
 				...input,
-				[e.target.title]: e.target.value,
+				[e.target.name]: e.target.value,
 			})
 		);
 	}
@@ -89,8 +77,8 @@ export default function CreateRecipe() {
 					<input
 						type="text"
 						name="title"
-						value={input.title}
 						onChange={(e) => handleChange(e)}
+						value={input.title}
 						className={style.input}
 					/>
 					{errors.title && <p>{errors.title}</p>}
@@ -100,8 +88,8 @@ export default function CreateRecipe() {
 					<textarea
 						type="textarea"
 						name="summary"
-						value={input.summary}
 						onChange={(e) => handleChange(e)}
+						value={input.summary}
 						className={style.input}
 					/>
 					{errors.summary && <p>{errors.summary}</p>}
@@ -111,9 +99,9 @@ export default function CreateRecipe() {
 					<input
 						type="text"
 						name="image"
+						onChange={(e) => handleChange(e)}
 						value={input.image}
 						placeholder="image URL"
-						onChange={(e) => handleChange(e)}
 						className={style.input}
 					/>
 				</div>
@@ -122,8 +110,8 @@ export default function CreateRecipe() {
 					<input
 						type="number"
 						name="healthScore"
-						value={input.healthScore}
 						onChange={(e) => handleChange(e)}
+						value={input.healthScore}
 						className={style.input}
 					/>
 					{errors.healthScore && <p>{errors.healthScore}</p>}
@@ -133,8 +121,8 @@ export default function CreateRecipe() {
 					<textarea
 						type="textarea"
 						name="instructions"
-						value={input.instructions}
 						onChange={(e) => handleChange(e)}
+						value={input.instructions}
 						className={style.textarea}
 					/>
 				</div>
@@ -153,7 +141,7 @@ export default function CreateRecipe() {
 				</ul>
 				{input.diets.map((e) => (
 					<div>
-						<p className={style.p}>{e}</p>
+						<p className={style.p} key={e}>{e}</p>
 						<button onClick={() => handleDelete(e)} className={style.delete}>
 							X
 						</button>
@@ -165,4 +153,16 @@ export default function CreateRecipe() {
 			</form>
 		</div>
 	);
+};
+
+export function validate(input) {
+	let errors = {};
+	if (!input.title) {
+		errors.title = "The recipe's title is required";
+	} else if (!input.summary) {
+		errors.summary = "Summary is required";
+	} else if (input.healthScore > 100) {
+		errors.healthScore = "Health score must be lower than 100";
+	}
+	return errors;
 };

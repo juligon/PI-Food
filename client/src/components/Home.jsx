@@ -25,7 +25,7 @@ export default function Home() {
 	const [recipesPerPage, setRecipesPerPage] = useState(9); //un segundo estado local, le paso la cantidad de recetas por pagina (9)
 	const indexOfLastRecipe = currentPage * recipesPerPage; // 9
 	const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage; // 0
-	const currentRecipes = allRecipes.slice(
+	const currentRecipes = allRecipes?.slice(
 		indexOfFirstRecipe,
 		indexOfLastRecipe
 	);
@@ -77,13 +77,17 @@ export default function Home() {
 			<NavBar />
 			<div>
 				<select onChange={(e) => handleSortByTitle(e)} className={style.select}>
-					<option value="all">Order by Name</option>
+					<option value="all" default disabled="disabled">
+						Order by Title
+					</option>
 					<option value="asc">A to Z</option>
 					{/*necesito el value para aplicar la logica y que la accion la entienda*/}
 					<option value="desc">Z to A</option>
 				</select>
 				<select onChange={(e) => handleSortByScore(e)} className={style.select}>
-					<option value="all">Order by HealthScore</option>
+					<option value="all" default disabled="disabled">
+						Order by HealthScore
+					</option>
 					<option value="max">Máx to Min</option>
 					<option value="min">Min to Máx</option>
 				</select>
@@ -91,7 +95,9 @@ export default function Home() {
 					onChange={(e) => handleFilterByDiet(e)}
 					className={style.select}
 				>
-					<option value="all">Select diet</option>
+					<option value="all" default disabled="disabled">
+						Select diet
+					</option>
 					<option value="gluten free">Gluten free</option>
 					<option value="dairy free">Dairy free</option>
 					<option value="lacto ovo vegetarian">Lacto ovo vegetarian</option>
