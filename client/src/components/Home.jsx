@@ -78,7 +78,7 @@ export default function Home() {
 			<NavBar />
 			<div>
 				<select onChange={(e) => handleSortByTitle(e)} className={style.select}>
-					<option value="all" selected={true} disabled="disabled">
+					<option value="default" selected={true} disabled="disabled">
 						Alphabetical Order
 					</option>
 					<option value="asc">A to Z</option>
@@ -86,7 +86,7 @@ export default function Home() {
 					<option value="desc">Z to A</option>
 				</select>
 				<select onChange={(e) => handleSortByScore(e)} className={style.select}>
-					<option value="all" selected={true} disabled="disabled">
+					<option value="default" selected={true} disabled="disabled">
 						Order by HealthScore
 					</option>
 					<option value="max">Máx to Min</option>
@@ -96,9 +96,10 @@ export default function Home() {
 					onChange={(e) => handleFilterByDiet(e)}
 					className={style.select}
 				>
-					<option value="all" selected={true} disabled="disabled">
+					<option value="default" selected={true} disabled="disabled">
 						Select diet
 					</option>
+					<option value="All">All</option>
 					<option value="gluten free">Gluten free</option>
 					<option value="dairy free">Dairy free</option>
 					<option value="lacto ovo vegetarian">Lacto ovo vegetarian</option>
@@ -135,6 +136,7 @@ export default function Home() {
 			</div>
 			<Pagination
 				key={1}
+				currentPage={currentPage}
 				recipesPerPage={recipesPerPage}
 				allRecipes={allRecipes.length}
 				pagination={pagination}
