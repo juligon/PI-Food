@@ -28,7 +28,7 @@ export default function Pagination({
 								}
 							}}
 						>
-							&lt;
+							Previous
 						</a>
 					</li>
 				)}
@@ -47,7 +47,7 @@ export default function Pagination({
 								}
 							}}
 						>
-							&gt;
+							Next
 						</a>
 					</li>
 				)}
