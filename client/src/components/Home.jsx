@@ -11,7 +11,7 @@ import Card from "./Card";
 import Pagination from "./Pagination";
 import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
-import style from "./Home.module.css"
+import style from "./Home.module.css";
 import logo from "./Logo/LogoPi.png";
 
 export default function Home() {
@@ -78,7 +78,7 @@ export default function Home() {
 			<NavBar />
 			<div>
 				<select onChange={(e) => handleSortByTitle(e)} className={style.select}>
-					<option value="all" default disabled="disabled">
+					<option value="all" selected={true} disabled="disabled">
 						Alphabetical Order
 					</option>
 					<option value="asc">A to Z</option>
@@ -86,7 +86,7 @@ export default function Home() {
 					<option value="desc">Z to A</option>
 				</select>
 				<select onChange={(e) => handleSortByScore(e)} className={style.select}>
-					<option value="all" default disabled="disabled">
+					<option value="all" selected={true} disabled="disabled">
 						Order by HealthScore
 					</option>
 					<option value="max">Máx to Min</option>
@@ -96,7 +96,7 @@ export default function Home() {
 					onChange={(e) => handleFilterByDiet(e)}
 					className={style.select}
 				>
-					<option value="all" default disabled="disabled">
+					<option value="all" selected={true} disabled="disabled">
 						Select diet
 					</option>
 					<option value="gluten free">Gluten free</option>

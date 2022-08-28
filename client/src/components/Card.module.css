@@ -7,7 +7,7 @@
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
     margin-top: 20px;
     margin-left: 20px;
-   
+       
 }
 
 .image {
@@ -29,7 +29,7 @@
 
 .diets {
     line-height: 0;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 10px;
 }
 
@@ -39,5 +39,7 @@
     font-size: 13px;
     color: black;
     padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
