@@ -38,7 +38,7 @@ const getApiRecipes = async () => { //trae las recetas de la api
 				image: e.image,
 				healthScore: e.healthScore,
 				summary: e.summary,
-				diets: e.diets?.map((f) => { return { name: f }}), //es un array de diets
+				diets: e.diets?.map((f) => { return { name: f }}), //igualo name con el tipo de dieta
 				dishTypes: e.dishTypes.map((f) => { return { name: f }}),
 				instructions: e.analyzedInstructions,
 			};
