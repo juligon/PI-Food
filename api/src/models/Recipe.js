@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
 			type: DataTypes.FLOAT, //puede ser un numero entero o decimal
 		},
 		image: {
-			type: DataTypes.STRING, //la api la envía por string
+			type: DataTypes.TEXT, //la api la envía por string
 		},
 		instructions: {
 			type: DataTypes.TEXT,
