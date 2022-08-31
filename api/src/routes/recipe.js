@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
 		newRecipe.addDiet(dbDiet);
 		res.send("Recipe succesfully created");
 	} catch (error) {
-		console.log(error);
+		res.status(404).send("Something went wrong!");
 	}
 });
 

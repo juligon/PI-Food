@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
 		const diets = await getDiets();
 		res.json(diets);
 	} catch (error) {
-		console.log(error);
+		res.status(404).send("Something went wrong!");
 	}
 });
 
