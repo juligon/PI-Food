@@ -14,16 +14,6 @@ const {
 	API_KEY08,
 	API_KEY09,
 	API_KEY10,
-	API_KEY11,
-	API_KEY12,
-	API_KEY13,
-	API_KEY14,
-	API_KEY15,
-	API_KEY16,
-	API_KEY17,
-	API_KEY18,
-	API_KEY19,
-	API_KEY20,
 } = process.env;
 
 const getDiets = async () => {
