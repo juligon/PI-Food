@@ -29,7 +29,7 @@ const {
 const getApiRecipes = async () => { //trae las recetas de la api
 	try {
 		const apiUrl = await axios.get(
-			`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY03}&addRecipeInformation=true&number=${100}`
+			`${SPOONACULAR_URL}/recipes/complexSearch?apiKey=${API_KEY08}&addRecipeInformation=true&number=${100}`
 		);
 		const apiRecipes = await apiUrl.data.results?.map((e) => { //axios trae la info en .data
 			return { //mapeo solo la info que necesito
@@ -76,8 +76,9 @@ const getAllRecipes = async () => {//trae todas las recetas
 	}	
 };
 
+
 module.exports = {
 	getApiRecipes,
 	getDbRecipes,
 	getAllRecipes,
-};
+	};
