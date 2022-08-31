@@ -106,3 +106,5 @@ export function cleanDetail() {
 		type: CLEAN_DETAIL,
 	};
 }
+
+

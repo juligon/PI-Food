@@ -5,6 +5,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDiets, postRecipe } from "../actions";
 import style from "./CreateRecipe.module.css";
 
+export function validate(input) {
+	let errors = {};
+	if (!input.title) {
+		errors.title = "The recipe's title is required";
+	} else if (!input.summary) {
+		errors.summary = "Summary is required";
+	} else if (input.healthScore > 100) {
+		errors.healthScore = "Health score must be lower than 100";
+	}
+	return errors;
+};
+
 export default function CreateRecipe() {
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -141,7 +153,9 @@ export default function CreateRecipe() {
 				</ul>
 				{input.diets.map((e) => (
 					<div>
-						<p className={style.p} key={e}>{e}</p>
+						<p className={style.p} key={e}>
+							{e}
+						</p>
 						<button onClick={() => handleDelete(e)} className={style.delete}>
 							X
 						</button>
@@ -155,14 +169,3 @@ export default function CreateRecipe() {
 	);
 };
 
-export function validate(input) {
-	let errors = {};
-	if (!input.title) {
-		errors.title = "The recipe's title is required";
-	} else if (!input.summary) {
-		errors.summary = "Summary is required";
-	} else if (input.healthScore > 100) {
-		errors.healthScore = "Health score must be lower than 100";
-	}
-	return errors;
-};

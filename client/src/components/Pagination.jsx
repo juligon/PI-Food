@@ -35,7 +35,9 @@ export default function Pagination({
 
 				{pageNumbers?.map((number) => (
 					<li key={number} className={style.li}>
-						<a onClick={() => pagination(number)}>{number}</a>
+						<a className={style.a} onClick={() => pagination(number)}>
+							{number}
+						</a>
 					</li>
 				))}
 				{pageNumbers.length > 1 && (
