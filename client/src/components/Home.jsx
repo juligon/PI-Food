@@ -17,7 +17,6 @@ import logo from "./Logo/LogoPi.png";
 export default function Home() {
 	const dispatch = useDispatch(); //despacha las actions
 	const allRecipes = useSelector((state) => state.recipes); //almacena en la constante todo lo que haya en el estado recipes
-	//const diets = useSelector((state) => state.diets);
 	const [orderTitle, setOrderTitle] = useState("");
 	const [orderScore, setOrderScore] = useState("");
 
@@ -42,7 +41,6 @@ export default function Home() {
 	useEffect(() => {
 		//trae todas las recetas del estado cuando se monta el componente
 		dispatch(getRecipes());
-		//dispatch(getDiets());
 	}, [dispatch]); //el componente se monta siempre y cuando suceda un dispatch
 
 	function handleClick(e) {
@@ -53,6 +51,7 @@ export default function Home() {
 
 	function handleFilterByDiet(e) {
 		e.preventDefault();
+		setCurrentPage(1)
 		dispatch(filterRecipesByDiet(e.target.value));
 	}
 

@@ -7,15 +7,16 @@ import style from "./CreateRecipe.module.css";
 
 export function validate(input) {
 	let errors = {};
-	if (!input.title) {
-		errors.title = "The recipe's title is required";
-	} else if (!input.summary) {
-		errors.summary = "Summary is required";
-	} else if (input.healthScore > 100) {
-		errors.healthScore = "Health score must be lower than 100";
-	}
+
+	if (!input.title) errors.title = "The recipe's title is required";
+	if (input.title.length > 50) errors.title = "The recipe's title is too large";
+	if (!input.summary) errors.summary = "Summary is required";
+	if (!input.image.includes("https")) errors.image = "Invalid URL";
+	if (input.healthScore < 0 && input.healthScore > 100) errors.healthScore = "Health score must be between 0 and 100";
+	if (!input.instructions) errors.instructions = "Instructions are required";
+	if (!input.diets.length) errors.diets = "Al least one diet's type is required";
 	return errors;
-};
+}
 
 export default function CreateRecipe() {
 	const dispatch = useDispatch();
@@ -35,6 +36,10 @@ export default function CreateRecipe() {
 		dispatch(getDiets());
 	}, [dispatch]);
 
+	//useEffect(() => {
+	//	setErrors(validate(input));
+	//}, [input]);
+
 	function handleChange(e) {
 		setInput({
 			...input,
@@ -49,10 +54,12 @@ export default function CreateRecipe() {
 	}
 
 	function handleSelect(e) {
-		setInput({
-			...input,
-			diets: [...input.diets, e.target.value], //me trae lo que ya había en el estado y le agrega el value
-		});
+		if (!input.diets.includes(e.target.value)) { //evita que se repita la selección
+			setInput({
+				...input,
+				diets: [...input.diets, e.target.value], //me trae lo que ya había en el estado y le agrega el value
+			});
+		};
 	}
 
 	function handleDelete(e) {
@@ -64,19 +71,23 @@ export default function CreateRecipe() {
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		dispatch(postRecipe(input));
-		alert("Recipe successfully created");
-		setInput({
-			title: "",
-			summary: "",
-			image: "",
-			healthScore: 0,
-			diets: [],
-			instructions: "",
-		});
-		history.push("/home"); //redirige al home
+		if (Object.keys(errors).length === 0 && input.diets.length > 0) { //si no hay errores y las dietas es mayor a 0
+			dispatch(postRecipe(input));
+			alert("Recipe successfully created");
+			setInput({
+				title: "",
+				summary: "",
+				image: "",
+				healthScore: 0,
+				diets: [],
+				instructions: "",
+			});
+			history.push("/home"); //redirige al home
+		} else {
+			alert("All fields must be completed")
+		}
 	}
-	
+
 	return (
 		<div className={style.container}>
 			<Link to="/home">
@@ -116,6 +127,7 @@ export default function CreateRecipe() {
 						placeholder="image URL"
 						className={style.input}
 					/>
+					{errors.image && <p>{errors.image}</p>}
 				</div>
 				<div>
 					<label className={style.label}>Health Score: </label>
@@ -137,6 +149,7 @@ export default function CreateRecipe() {
 						value={input.instructions}
 						className={style.textarea}
 					/>
+					{errors.healthScore && <p>{errors.instructions}</p>}
 				</div>
 				<label className={style.label}>Select diets </label>
 				<select onChange={(e) => handleSelect(e)} className={style.select}>
@@ -146,6 +159,7 @@ export default function CreateRecipe() {
 						</option>
 					))}
 				</select>
+				{errors.diets && <p>{errors.diets}</p>}
 				<ul className={style.ul}>
 					<li className={style.li}>
 						{input.diets.map((e) => e[0].toUpperCase() + e.slice(1) + ", ")}
@@ -167,5 +181,4 @@ export default function CreateRecipe() {
 			</form>
 		</div>
 	);
-};
-
+}
