@@ -9,10 +9,9 @@ export function validate(input) {
 	let errors = {};
 
 	if (!input.title) errors.title = "The recipe's title is required";
-	if (input.title.length > 50) errors.title = "The recipe's title is too large";
 	if (!input.summary) errors.summary = "Summary is required";
 	if (!input.image.includes("https")) errors.image = "Invalid URL";
-	if (input.healthScore < 0 && input.healthScore > 100) errors.healthScore = "Health score must be between 0 and 100";
+	if (input.healthScore < 0 || input.healthScore > 100) errors.healthScore = "Health score must be a number between 0 and 100";
 	if (!input.instructions) errors.instructions = "Instructions are required";
 	if (!input.diets.length) errors.diets = "Al least one diet's type is required";
 	return errors;
@@ -36,9 +35,9 @@ export default function CreateRecipe() {
 		dispatch(getDiets());
 	}, [dispatch]);
 
-	//useEffect(() => {
-	//	setErrors(validate(input));
-	//}, [input]);
+	useEffect(() => {
+		setErrors(validate(input));
+	}, [input]);
 
 	function handleChange(e) {
 		setInput({
@@ -149,7 +148,7 @@ export default function CreateRecipe() {
 						value={input.instructions}
 						className={style.textarea}
 					/>
-					{errors.healthScore && <p>{errors.instructions}</p>}
+					{errors.instructions && <p>{errors.instructions}</p>}
 				</div>
 				<label className={style.label}>Select diets </label>
 				<select onChange={(e) => handleSelect(e)} className={style.select}>
