@@ -53,7 +53,7 @@ export default function CreateRecipe() {
 	}
 
 	function handleSelect(e) {
-		if (!input.diets.includes(e.target.value)) { //evita que se repita la selección
+		if (!input.diets.includes(e.target.value)) { //evita que se repita la dieta seleccionada
 			setInput({
 				...input,
 				diets: [...input.diets, e.target.value], //me trae lo que ya había en el estado y le agrega el value
