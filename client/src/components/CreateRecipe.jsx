@@ -70,8 +70,8 @@ export default function CreateRecipe() {
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		if (Object.keys(errors).length === 0 && input.diets.length > 0) { //si no hay errores y las dietas es mayor a 0
-			dispatch(postRecipe(input));
+		if (Object.keys(errors).length === 0 && input.diets.length > 0) {//Object.keys devuelve un array de todas las propiedades del objeto
+			dispatch(postRecipe(input));                                 //si no hay errores y las dietas son mayor a 0
 			alert("Recipe successfully created");
 			setInput({
 				title: "",
