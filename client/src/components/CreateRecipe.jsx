@@ -5,14 +5,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDiets, postRecipe } from "../actions";
 import style from "./CreateRecipe.module.css";
 
+let validateTitle = /^[a-zA-Z\s]+$/;
 export function validate(input) {
 	let errors = {};
 
 	if (!input.title) errors.title = "The recipe's title is required";
+	if (input.title.length > 50) errors.title = "Title is too large";
+	if (!validateTitle.test(input.title)) errors.title = "Numbers or special characters are not allowed";
 	if (!input.summary) errors.summary = "Summary is required";
+	if (input.summary.length > 500) errors.summary = "Summary can not exceed 500 characters"
 	if (!input.image.includes("https")) errors.image = "Invalid URL";
-	if (input.healthScore < 0 || input.healthScore > 100) errors.healthScore = "Health score must be a number between 0 and 100";
+	if (input.healthScore.length === 0) errors.healthScore = 'Health score is not valid';
+	if (input.healthScore < 1 || input.healthScore > 100) errors.healthScore = "Health score must be a number between 1 and 100";
+	if (input.healthScore.toString().includes('.')) errors.healthScore = 'Health score must be an integer';
 	if (!input.instructions) errors.instructions = "Instructions are required";
+	if (input.instructions.length > 1500) errors.instructions = "Instructions can not exceed 1500 characters";
 	if (!input.diets.length) errors.diets = "Al least one diet's type is required";
 	return errors;
 }
