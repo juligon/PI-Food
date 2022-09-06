@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const { getAllRecipes, getApiRecipes, getDbRecipes } = require("../controllers/recipes");
 
-router.get("/", async (req, res) => { //get a / trae todas las recetas
+router.get("", async (req, res) => { //get a / trae todas las recetas
 	const { title } = req.query; //si se pasa title por query trae la receta específica
 	try {
 		const allRecipes = await getAllRecipes();
