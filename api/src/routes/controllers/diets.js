@@ -1,4 +1,4 @@
-const { Diet } = require("../db");
+const { Diet } = require("../../db");
 require("dotenv").config();
 const axios = require("axios");
 const {

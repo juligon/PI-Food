@@ -19,7 +19,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
-const { getDiets } = require("./src/controllers/diets");
+const { getDiets } = require("./src/routes/controllers/diets");
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(async () => {
