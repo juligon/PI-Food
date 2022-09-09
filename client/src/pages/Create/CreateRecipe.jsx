@@ -51,12 +51,6 @@ export default function CreateRecipe() {
 			...input,
 			[e.target.name]: e.target.value, //toma el valor del input y lo pasa al estado
 		});
-		setErrors(
-			validate({
-				...input,
-				[e.target.name]: e.target.value,
-			})
-		);
 	}
 
 	function handleSelect(e) {
