@@ -12,7 +12,7 @@ import Pagination from "../Pagination/Pagination";
 import NavBar from "../NavBar/NavBar";
 import { Link } from "react-router-dom";
 import style from "./Home.module.css";
-import logo from "../Logo/LogoPi.png";
+import logo from "./LogoPi.png";
 
 export default function Home() {
 	const dispatch = useDispatch(); //despacha las actions

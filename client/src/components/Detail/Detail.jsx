@@ -2,19 +2,19 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getDetails, cleanDetail } from "../../redux/actions";
-import style from "./Details.module.css";
+import { getDetail, cleanDetail } from "../../redux/actions";
+import style from "./Detail.module.css";
 
-export default function Details() {
+export default function Detail() {
 	const dispatch = useDispatch();
 	const { id } = useParams();
 
 	useEffect(() => {
-		dispatch(getDetails(id));
+		dispatch(getDetail(id));
 		dispatch(cleanDetail());
 	}, [dispatch, id]);
 
-	const recipe = useSelector((state) => state.details);
+	const recipe = useSelector((state) => state.detail);
 
 	return (
 		<div className={style.container}>

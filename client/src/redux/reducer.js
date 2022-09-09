@@ -3,7 +3,7 @@ import {
 	GET_DIETS,
 	GET_RECIPES_BY_TITLE,
 	POST_RECIPE,
-	GET_DETAILS,
+	GET_DETAIL,
 	FILTER_BY_DIET,
 	ORDER_BY_TITLE,
 	ORDER_BY_SCORE,
@@ -13,7 +13,7 @@ import {
 const initialState = {
 	recipes: [],
 	allRecipes: [],
-	details: [],
+	detail: [],
 	diets: [],
 };
 
@@ -39,10 +39,10 @@ function rootReducer(state = initialState, action) {
 			return {
 				...state,
 			};
-		case GET_DETAILS:
+		case GET_DETAIL:
 			return {
 				...state,
-				details: action.payload,
+				detail: action.payload,
 			};
 		case FILTER_BY_DIET:
 			const allRecipes = state.allRecipes; //copia del estado recipes que va a tener siempre todas las recetas
@@ -99,7 +99,7 @@ function rootReducer(state = initialState, action) {
 		case CLEAN_DETAIL:
 			return {
 				...state,
-				details: [],
+				detail: [],
 			}
 		default:
 			return { ...state };

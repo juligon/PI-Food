@@ -3,7 +3,7 @@ import axios from "axios";
 export const GET_RECIPES = "GET_RECIPES";
 export const GET_RECIPES_BY_TITLE = "GET_RECIPES_BY_TITLE";
 export const GET_DIETS = "GET_DIETS";
-export const GET_DETAILS = "GET_DETAILS";
+export const GET_DETAIL = "GET_DETAIL";
 export const POST_RECIPE = "POST_RECIPE";
 export const FILTER_BY_DIET = "FILTER_BY_DIET";
 export const ORDER_BY_TITLE = "ORDER_BY_TITLE";
@@ -55,11 +55,11 @@ export function getDiets() {
 	};
 }
 
-export function getDetails(id) {
+export function getDetail(id) {
 	return async function (dispatch) {
 		try {
 			var json = await axios.get(`http://localhost:3001/recipes/${id}`);
-			return dispatch({ type: GET_DETAILS, payload: json.data });
+			return dispatch({ type: GET_DETAIL, payload: json.data });
 		} catch (error) {
 			console.log(error);
 		}
