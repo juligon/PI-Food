@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDiets, postRecipe } from "../actions";
+import { getDiets, postRecipe } from "../../redux/actions";
 import style from "./CreateRecipe.module.css";
 
 let validateTitle = /^[a-zA-Z\s]+$/;

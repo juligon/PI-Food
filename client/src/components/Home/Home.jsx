@@ -6,13 +6,13 @@ import {
 	filterRecipesByDiet,
 	orderByTitle,
 	orderByScore,
-} from "../actions";
-import Card from "./Card";
-import Pagination from "./Pagination";
-import NavBar from "./NavBar";
+} from "../../redux/actions";
+import Card from "../Card/Card";
+import Pagination from "../Pagination/Pagination";
+import NavBar from "../NavBar/NavBar";
 import { Link } from "react-router-dom";
 import style from "./Home.module.css";
-import logo from "./Logo/LogoPi.png";
+import logo from "../Logo/LogoPi.png";
 
 export default function Home() {
 	const dispatch = useDispatch(); //despacha las actions

@@ -2,7 +2,7 @@
     display: flex;
     min-height: 100vh;
     min-width: 100vh;
-    background-image: url("../components/Imágenes/landing.gif");
+    background-image: url("../Imágenes/landing.gif");
     background-size: cover;
     background-position: center center;
     justify-content: center;
@@ -11,10 +11,10 @@
 
 @font-face {
     font-family: 'Oswald-Bold';
-    src: url("./Typos/Oswald-Bold.ttf");
+    src: url("../Typos/Oswald-Bold.ttf");
 
     font-family: 'Roboto-Bold';
-    src: url("./Typos/Roboto-Bold.ttf");
+    src: url("../Typos/Roboto-Bold.ttf");
 
 }
 

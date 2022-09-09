@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getRecipesByTitle } from "../actions";
+import { getRecipesByTitle } from "../../redux/actions";
 import style from "./NavBar.module.css";
 
 export default function NavBar() {

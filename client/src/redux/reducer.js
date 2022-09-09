@@ -8,7 +8,7 @@ import {
 	ORDER_BY_TITLE,
 	ORDER_BY_SCORE,
 	CLEAN_DETAIL,
-} from "../actions";
+} from "../redux/actions";
 
 const initialState = {
 	recipes: [],

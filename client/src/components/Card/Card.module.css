@@ -20,10 +20,10 @@
 
 @font-face {
     font-family: 'Oswald-Medium';
-    src: url("./Typos/Oswald-Medium.ttf");
+    src: url("../Typos/Oswald-Medium.ttf");
 
     font-family: 'Roboto-Bold';
-    src: url("./Typos/Roboto-Bold.ttf");
+    src: url("../Typos/Roboto-Bold.ttf");
     
 }
 

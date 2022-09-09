@@ -1,9 +1,9 @@
 @font-face {
     font-family: 'Oswald-Demibold';
-    src: url("./Typos/Oswald-DemiBold.ttf");
+    src: url("../Typos/Oswald-DemiBold.ttf");
 
     font-family: 'Roboto-Bold';
-    src: url("./Typos/Roboto-Bold.ttf");
+    src: url("../Typos/Roboto-Bold.ttf");
 }
 
 .button {

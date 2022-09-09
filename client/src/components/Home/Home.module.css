@@ -2,65 +2,30 @@
     display: flex;
     min-height: 100vh;
     min-width: 100vh;
-    background-color: white;
+    background-color: #ED65F1;
     flex-direction: column;
-    align-items: flex-start;
-    
+    justify-content: center;
+    align-self: center;
+}
+
+.logo {
+    width: 250px;
+    position: relative;
+    align-self: center;
 }
 
 @font-face {
-    font-family: 'Oswald-Demibold';
-    src: url("./Typos/Oswald-DemiBold.ttf");
-
     font-family: 'Roboto-Bold';
-    src: url("./Typos/Roboto-Bold.ttf");
+    src: url("../Typos/Roboto-Bold.ttf");
+
+    font-family: 'Roboto';
+    src: url("../Typos/Roboto-Regular.ttf");
 }
 
-.title{
-    font-family: 'Roboto-Bold' ;
-    font-size: 36px;
-    text-align: left;
-    margin-left: 100px;
-    margin-right: 100px;
-}
-
-.summary{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 14px;
-    text-align: left;
-    margin-left: 100px;
-    margin-right: 100px;
-}
-
-.instructions{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 12px;
-    text-align: left;
-    margin-left: 100px;
-    margin-right: 100px;
-    
-}
-
-.items{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 14px;
-    text-align: left;
-    margin-left: 100px;
-    margin-right: 100px;
-}
-
-.image{
-    width: 1200px;
-    height: 500px;
-    margin: 50px;
-}
-
-.loading{
+.cards {
     display: flex;
-    align-content: center;
-    font-family: 'Roboto-Bold';
-    font-size: 16px;
-
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .button {
@@ -100,5 +65,21 @@
     -webkit-transform-origin: 50% 50% 0;
     transform-origin: 50% 50% 0;
     align-self: center;
-    margin-left: 600px;
+    padding: 10px;
+    margin-left: 620px;
+}
+
+.select {
+    width: 25%;
+    height: 15px;
+    margin: 10px;
+    padding: 16px 20px;
+    border: 1px solid black;
+    background-color: #f1f1f1;
+    font-family: 'Roboto';
+}
+
+.link {
+    text-decoration: none;
+    color: black;
 }
