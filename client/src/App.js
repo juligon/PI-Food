@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
-import LandingPage from "./components/Landing/LandingPage";
-import Home from "./components/Home/Home";
-import Detail from "./components/Detail/Detail";
-import CreateRecipe from "./components/Create/CreateRecipe";
+import LandingPage from "./pages/Landing/LandingPage";
+import Home from "./pages/Home/Home";
+import Detail from "./pages/Detail/Detail";
+import CreateRecipe from "./pages/Create/CreateRecipe";
 
 function App() {
 	return (

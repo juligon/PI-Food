@@ -7,9 +7,9 @@ import {
 	orderByTitle,
 	orderByScore,
 } from "../../redux/actions";
-import Card from "../Card/Card";
-import Pagination from "../Pagination/Pagination";
-import NavBar from "../NavBar/NavBar";
+import Card from "../../components/Card/Card";
+import Pagination from "../../components/Pagination/Pagination";
+import NavBar from "../../components/NavBar/NavBar";
 import { Link } from "react-router-dom";
 import style from "./Home.module.css";
 import logo from "./LogoPi.png";
