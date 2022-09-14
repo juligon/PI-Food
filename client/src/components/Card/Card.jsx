@@ -10,7 +10,7 @@ export default function Card({ title, diets, image, id }) {
 					{e.name}
 				</p>
 			))}
-			<img src={image} alt="Image not found" className={style.image} />
+			<img src={image} alt="Not found" className={style.image} />
 		</div>
 	);
 }
