@@ -76,26 +76,35 @@ export default function Home() {
 			</div>
 			<NavBar />
 			<div>
-				<select onChange={(e) => handleSortByTitle(e)} className={style.select}>
-					<option value="" selected={true} disabled="disabled">
+				<select
+					defaultValue="default"
+					onChange={(e) => handleSortByTitle(e)}
+					className={style.select}
+				>
+					<option value="default" disabled="disabled">
 						Alphabetical Order
 					</option>
 					<option value="asc">A to Z</option>
 					{/*necesito el value para aplicar la logica y que la accion la entienda*/}
 					<option value="desc">Z to A</option>
 				</select>
-				<select onChange={(e) => handleSortByScore(e)} className={style.select}>
-					<option value="" selected={true} disabled="disabled">
+				<select
+					defaultValue="default"
+					onChange={(e) => handleSortByScore(e)}
+					className={style.select}
+				>
+					<option value="default" disabled="disabled">
 						Order by HealthScore
 					</option>
 					<option value="max">Min to Máx</option>
 					<option value="min">Máx to Min</option>
 				</select>
 				<select
+					defaultValue="default"
 					onChange={(e) => handleFilterByDiet(e)}
 					className={style.select}
 				>
-					<option value="" selected={true} disabled="disabled">
+					<option value="default" disabled="disabled">
 						Select diet
 					</option>
 					<option value="All">All</option>
