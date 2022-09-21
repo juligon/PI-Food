@@ -16,10 +16,10 @@
 
 @font-face {
     font-family: 'Roboto-Bold';
-    src: url("../../Typos/Roboto-Bold.ttf");
+    src: url("../../typos/Roboto-Bold.ttf");
 
     font-family: 'Roboto';
-    src: url("../../Typos/Roboto-Regular.ttf");
+    src: url("../../typos/Roboto-Regular.ttf");
 }
 
 .cards {

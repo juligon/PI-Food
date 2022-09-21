@@ -170,7 +170,11 @@ export default function CreateRecipe() {
 						<p className={style.p} key={e}>
 							{e}
 						</p>
-						<button onClick={() => handleDelete(e)} className={style.delete}>
+						<button
+							type="button"
+							onClick={() => handleDelete(e)}
+							className={style.delete}
+						>
 							X
 						</button>
 					</div>
