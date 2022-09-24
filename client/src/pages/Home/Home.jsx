@@ -81,7 +81,7 @@ export default function Home() {
 					onChange={(e) => handleSortByTitle(e)}
 					className={style.select}
 				>
-					<option value="default" disabled="disabled">
+					<option value="default" disabled selected>
 						Alphabetical Order
 					</option>
 					<option value="asc">A to Z</option>
@@ -93,7 +93,7 @@ export default function Home() {
 					onChange={(e) => handleSortByScore(e)}
 					className={style.select}
 				>
-					<option value="default" disabled="disabled">
+					<option value="default" disabled selected>
 						Order by HealthScore
 					</option>
 					<option value="max">Min to Máx</option>
@@ -104,7 +104,7 @@ export default function Home() {
 					onChange={(e) => handleFilterByDiet(e)}
 					className={style.select}
 				>
-					<option value="default" disabled="disabled">
+					<option value="default" disabled selected>
 						Select diet
 					</option>
 					<option value="All">All</option>

@@ -151,8 +151,11 @@ export default function CreateRecipe() {
 					/>
 					{errors.instructions && <p>{errors.instructions}</p>}
 				</div>
-				<label className={style.label}>Select diets </label>
+				<label className={style.label}>Diets: </label>
 				<select onChange={(e) => handleSelect(e)} className={style.select}>
+					<option value={input.countries} disabled selected>
+						-- Select a diet --
+					</option>
 					{diets.map((d, index) => (
 						<option key={index} value={d.name}>
 							{d.name}
