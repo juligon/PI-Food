@@ -82,7 +82,7 @@ export default function Home() {
 					className={style.select}
 				>
 					<option value="default" disabled selected>
-						Alphabetical Order
+						-- Alphabetical order --
 					</option>
 					<option value="asc">A to Z</option>
 					{/*necesito el value para aplicar la logica y que la accion la entienda*/}
@@ -94,10 +94,10 @@ export default function Home() {
 					className={style.select}
 				>
 					<option value="default" disabled selected>
-						Order by HealthScore
+						-- Order by healthScore --
 					</option>
-					<option value="max">Min to Máx</option>
-					<option value="min">Máx to Min</option>
+					<option value="max">Min. to Máx.</option>
+					<option value="min">Máx. to Min.</option>
 				</select>
 				<select
 					defaultValue="default"
@@ -105,7 +105,7 @@ export default function Home() {
 					className={style.select}
 				>
 					<option value="default" disabled selected>
-						Select diet
+						-- Filter by diet --
 					</option>
 					<option value="All">All</option>
 					<option value="gluten free">Gluten free</option>

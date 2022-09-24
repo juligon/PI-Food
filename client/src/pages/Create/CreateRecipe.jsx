@@ -183,7 +183,7 @@ export default function CreateRecipe() {
 					</div>
 				))}
 				<button type="submit" className={style.btnForm}>
-					Create recipe
+					Create
 				</button>
 			</form>
 		</div>
